@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>おうちシェフAI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🥕 おうちシェフAI</h1>
+      <p>冷蔵庫の材料を入力するだけで、レシピと写真を自動生成。</p>
+    </header>
+
+    <section class="panel">
+      <label for="ingredients">材料（カンマ区切り）</label>
+      <textarea id="ingredients" placeholder="例: 鶏むね肉, 玉ねぎ, トマト, チーズ"></textarea>
+
+      <details>
+        <summary>OpenAI画像設定（images2.0）</summary>
+        <label for="apiKey">OpenAI APIキー（ブラウザ保存なし）</label>
+        <input id="apiKey" type="password" placeholder="sk-..." />
+        <label for="imageModel">画像モデル名</label>
+        <input id="imageModel" type="text" value="images-2.0" />
+      </details>
+
+      <button id="generateBtn">レシピを提案する</button>
+    </section>
+
+    <section>
+      <h2>提案レシピ</h2>
+      <div id="recipes" class="grid"></div>
+    </section>
+
+    <section>
+      <h2>お気に入り</h2>
+      <div id="favorites" class="grid"></div>
+    </section>
+  </main>
+
+  <template id="recipeCardTemplate">
+    <article class="card">
+      <img class="recipe-image" alt="料理写真" />
+      <div class="card-body">
+        <h3 class="recipe-title"></h3>
+        <p class="recipe-summary"></p>
+        <h4>使う材料</h4>
+        <ul class="recipe-ingredients"></ul>
+        <h4>作り方</h4>
+        <ol class="recipe-steps"></ol>
+        <button class="favorite-btn">♡ お気に入りに追加</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
